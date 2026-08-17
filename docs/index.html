@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>С 17-летием ❤️</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;500&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(160deg, #1a0b1f, #2d1b2e, #3d1f3a);
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* падающие лепестки */
+  .petal {
+    position: absolute;
+    color: #ff8fab;
+    opacity: 0;
+    animation: fall linear infinite;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  @keyframes fall {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px) rotate(0deg);
+    }
+    15% { opacity: 0.55; }
+    85% { opacity: 0.4; }
+    100% {
+      opacity: 0;
+      transform: translateY(100vh) rotate(400deg);
+    }
+  }
+
+  .gift-wrapper {
+    position: relative;
+    width: 260px;
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  /* мягкое свечение вокруг коробки */
+  .gift-wrapper::before {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(255, 107, 138, 0.35) 0%, transparent 70%);
+    filter: blur(18px);
+    animation: glow 3.5s ease-in-out infinite;
+    z-index: -1;
+  }
+
+  @keyframes glow {
+    0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+  }
+
+  .box {
+    width: 180px;
+    height: 140px;
+    background: linear-gradient(145deg, #ff6b8a, #ff4d6d);
+    border-radius: 8px 8px 12px 12px;
+    position: relative;
+    box-shadow: 
+      0 15px 35px rgba(255, 77, 109, 0.5),
+      inset 0 -8px 20px rgba(0,0,0,0.15);
+    animation: box-breathe 3.5s ease-in-out infinite;
+  }
+
+  .box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 100%;
+    background: linear-gradient(to bottom, #ffd700, #ffb700);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  }
+
+  .box::after {
+    content: '';
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    height: 28px;
+    background: linear-gradient(to right, #ffd700, #ffb700);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  }
+
+  .lid {
+    position: absolute;
+    bottom: 125px;
+    width: 200px;
+    height: 55px;
+    background: linear-gradient(145deg, #ff8fab, #ff6b8a);
+    border-radius: 10px 10px 4px 4px;
+    box-shadow: 0 8px 25px rgba(255, 77, 109, 0.45);
+    transform-origin: center bottom;
+    animation: lid-fly 2.8s ease-in-out infinite;
+    z-index: 5;
+  }
+
+  .lid::before {
+    content: '🎀';
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 42px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+  }
+
+  .lid::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 18px;
+    background: linear-gradient(to right, #ffd700, #ffb700);
+    transform: translateY(-50%);
+  }
+
+  @keyframes box-breathe {
+    0%, 100% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.03) translateY(-4px); }
+  }
+
+  @keyframes lid-fly {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-18px) rotate(-3deg); }
+    50% { transform: translateY(-28px) rotate(2deg); }
+    75% { transform: translateY(-14px) rotate(-2deg); }
+  }
+
+  .sparkle {
+    position: absolute;
+    font-size: 18px;
+    color: #ffe066;
+    text-shadow: 0 0 10px #ffd700, 0 0 20px #ffb700;
+    animation: sparkle-glow 2s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 20;
+  }
+
+  @keyframes sparkle-glow {
+    0%, 100% { opacity: 0.3; transform: scale(0.7) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.3) rotate(15deg); }
+  }
+
+  /* частицы при открытии */
+  .particle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 30;
+    animation: explode 1.4s cubic-bezier(0.15, 0.7, 0.3, 1) forwards;
+    text-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+  }
+
+  @keyframes explode {
+    0% {
+      opacity: 1;
+      transform: translate(0, 0) scale(0.6) rotate(0deg);
+    }
+    30% {
+      opacity: 1;
+      transform: translate(calc(var(--tx) * 0.4), calc(var(--ty) * 0.4)) scale(1.4) rotate(40deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(var(--tx), var(--ty)) scale(0.2) rotate(180deg);
+    }
+  }
+
+  .bottom-text {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #ffb6c1;
+    font-size: 15px;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    z-index: 10;
+  }
+
+  .bottom-text span {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #fff;
+    margin-top: 6px;
+    text-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+  }
+
+  .for-her {
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 182, 193, 0.35);
+    letter-spacing: 2px;
+    z-index: 5;
+  }
+</style>
+</head>
+<body>
+
+  <div id="stars"></div>
+  <div id="petals"></div>
+
+  <div class="gift-wrapper" id="gift" onclick="openGift()">
+    <div class="lid" id="lid"></div>
+    <div class="box"></div>
+
+    <div class="sparkle" style="top: 20px; left: 30px;">✦</div>
+    <div class="sparkle" style="top: 40px; right: 25px; animation-delay: 0.4s;">✧</div>
+    <div class="sparkle" style="top: 90px; left: 10px; animation-delay: 0.8s;">★</div>
+    <div class="sparkle" style="top: 110px; right: 15px; animation-delay: 1.2s;">✦</div>
+    <div class="sparkle" style="bottom: 40px; left: 40px; animation-delay: 0.6s;">✧</div>
+    <div class="sparkle" style="bottom: 60px; right: 35px; animation-delay: 1s;">★</div>
+  </div>
+
+  <div class="bottom-text">
+    Нажми на коробку
+    <span>С 17-летием ✨</span>
+  </div>
+
+  <div class="for-her">для Катюши</div>
+
+<script>
+  // звёзды
+  function createStars() {
+    const container = document.getElementById('stars');
+    for (let i = 0; i < 55; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2.8 + 1;
+      star.style.width = size + 'px';
+      star.style.height = size + 'px';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.animationDuration = (2 + Math.random() * 3) + 's';
+      star.style.animationDelay = Math.random() * 3 + 's';
+      container.appendChild(star);
+    }
+  }
+
+  // лепестки
+  function createPetals() {
+    const container = document.getElementById('petals');
+    for (let i = 0; i < 14; i++) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      petal.innerHTML = '❀';
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = (10 + Math.random() * 9) + 's';
+      petal.style.animationDelay = Math.random() * 12 + 's';
+      petal.style.fontSize = (11 + Math.random() * 9) + 'px';
+      container.appendChild(petal);
+    }
+  }
+
+  function openGift() {
+    const lid = document.getElementById('lid');
+    const gift = document.getElementById('gift');
+
+    // останавливаем анимацию крышки
+    lid.style.animation = 'none';
+    lid.style.transition = 'all 1s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    lid.style.transform = 'translateY(-110px) rotate(-18deg) scale(1.1)';
+    lid.style.opacity = '0.6';
+
+    // фееричный взрыв
+    const symbols = ['✦', '✧', '★', '☆', '♥', '♡', '✨', '✴', '✪', '❀'];
+    const colors = ['#ffe066', '#ffd700', '#ff8fab', '#ff6b8a', '#ffb6c1', '#fff0f5'];
+
+    for (let i = 0; i < 42; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+      
+      p.style.left = '50%';
+      p.style.top = '42%';
+      p.style.fontSize = (14 + Math.random() * 18) + 'px';
+      p.style.color = colors[Math.floor(Math.random() * colors.length)];
+      
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 90 + Math.random() * 160;
+      
+      p.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+      p.style.setProperty('--ty', Math.sin(angle) * distance - 40 + 'px');
+      p.style.animationDuration = (1.1 + Math.random() * 0.7) + 's';
+      p.style.animationDelay = (Math.random() * 0.15) + 's';
+      
+      gift.appendChild(p);
+    }
+
+    // дополнительная яркая вспышка в центре
+    for (let i = 0; i < 8; i++) {
+      const flash = document.createElement('div');
+      flash.className = 'particle';
+      flash.innerHTML = '✦';
+      flash.style.left = '50%';
+      flash.style.top = '40%';
+      flash.style.fontSize = '28px';
+      flash.style.color = '#fff8dc';
+      flash.style.setProperty('--tx', (Math.random() - 0.5) * 40 + 'px');
+      flash.style.setProperty('--ty', (Math.random() - 0.5) * 40 + 'px');
+      flash.style.animationDuration = '0.7s';
+      gift.appendChild(flash);
+    }
+
+    // переход
+    setTimeout(() => {
+      window.location.href = 'HappyBirthday.html';
+    }, 1900);
+  }
+
+  createStars();
+  createPetals();
+</script>
+</body>
+</html>
